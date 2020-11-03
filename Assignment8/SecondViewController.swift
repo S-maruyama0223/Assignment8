@@ -19,14 +19,14 @@ class SecondViewController: UIViewController {
     
     @IBAction private func valueChanged(_ slider: UISlider) {
         valueLabel.text = String(slider.value)
-        if let firstViewController = tabBarController?.viewControllers?[0] as? FirstViewController {
-            firstViewController.loadViewIfNeeded()
-            firstViewController.valueLabel.text = self.valueLabel.text
-            firstViewController.slider.value = self.slider.value
-
-        }else{
-            print("View Controller does not exist.")
+        guard let destinationIndex = tabBarController?.viewControllers?.firstIndex(where: { $0 is FirstViewController })
+        else{
+            return
         }
+        let firstViewController = tabBarController!.viewControllers![destinationIndex] as! FirstViewController
+        firstViewController.loadViewIfNeeded()
+        firstViewController.valueLabel.text = String(slider.value)
+        firstViewController.slider.value = self.slider.value
     }
-    
 }
+
