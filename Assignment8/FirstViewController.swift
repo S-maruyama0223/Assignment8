@@ -9,8 +9,8 @@ import UIKit
 
 class FirstViewController: UIViewController {
     
-    @IBOutlet weak var valueLabel: UILabel!
-    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak private var valueLabel: UILabel!
+    @IBOutlet weak private var slider: UISlider!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     @IBAction private func valueChanged(_ slider: UISlider) {
